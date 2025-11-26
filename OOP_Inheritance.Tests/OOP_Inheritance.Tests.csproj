@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OOPBase\OOPBase.csproj" />
     <ProjectReference Include="..\OOP_Inheritance\OOP_Inheritance.csproj" />
   </ItemGroup>
 

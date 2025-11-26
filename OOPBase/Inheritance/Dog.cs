@@ -18,4 +18,3 @@ namespace OOPBase.Inheritance
         }
     }
 }
-
