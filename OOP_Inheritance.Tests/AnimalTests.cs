@@ -1,6 +1,8 @@
-﻿using OOPBase.Inheritance;
-using Xunit;
+﻿using Xunit;
 using System;
+using System.IO;
+using OOPBase.Inheritance;
+using OOPBase.Interfaces;
 
 namespace OOP_Inheritance.Tests
 {
@@ -9,41 +11,41 @@ namespace OOP_Inheritance.Tests
         [Fact]
         public void Dog_Should_MakeSound_AndShowInfo()
         {
-            var dog = new Dog();
-            dog.Name = "Reksio";
+            var dog = new Dog { Name = "Reksio" };
 
             using (var sw = new StringWriter())
             {
                 Console.SetOut(sw);
-
                 dog.MakeSound();
                 dog.ShowInfo();
-
                 var output = sw.ToString();
-
                 Assert.Contains("Bark bark!", output);
                 Assert.Contains("Dogs name: Reksio", output);
             }
         }
 
         [Fact]
-        public void Cat_Should_MakeSound_AndShowInfo()
+        public void Cat_Should_Implement_IAnimalInfo_And_PrintDescription()
         {
-            var cat = new Cat();
-            cat.Name = "Mruczek";
+            var cat = new Cat { Name = "Gacek" };
+
+            // Check that cat implements the interface (compile-time check)
+            Assert.IsAssignableFrom<IAnimalInfo>(cat);
 
             using (var sw = new StringWriter())
             {
                 Console.SetOut(sw);
-
-                cat.MakeSound();
-                cat.ShowInfo();
-
+                // call interface method
+                cat.PrintDescription();
                 var output = sw.ToString();
-
-                Assert.Contains("Meow!", output);
-                Assert.Contains("Cat name: Mruczek", output);
+                Assert.Contains("Gacek is a cat that says Meow", output);
             }
         }
+        //[Fact]
+        //public void Call_method_interface()
+        //{
+        //    IAnimalInfo animalInfo =  new Cat { Name = "Reksio" };
+        //    animalInfo.Description.Should().Be("Reksio is a cat that says Meow");
+        //}
     }
 }
