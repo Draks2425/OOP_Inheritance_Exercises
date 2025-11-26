@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="../OOP_Inheritance.Tests/OOP_Inheritance.Tests.csproj" Id="9ae27a34-9c3c-4263-905a-421ec8beb2b8" />
+  <Project Path="../OOP_Inheritance/OOP_Inheritance.csproj" Id="12e3b341-433a-4ad3-8862-df10b444ab0e" />
   <Project Path="OOPBase.csproj" />
 </Solution>
