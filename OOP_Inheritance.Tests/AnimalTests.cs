@@ -9,22 +9,41 @@ namespace OOP_Inheritance.Tests
         [Fact]
         public void Dog_Should_MakeSound_AndShowInfo()
         {
-            // Arrange
             var dog = new Dog();
             dog.Name = "Reksio";
 
-            using var writer = new StringWriter();
-            Console.SetOut(writer);
+            using (var sw = new StringWriter())
+            {
+                Console.SetOut(sw);
 
-            // Act
-            dog.MakeSound();
-            dog.ShowInfo();
+                dog.MakeSound();
+                dog.ShowInfo();
 
-            var output = writer.ToString();
+                var output = sw.ToString();
 
-            // Assert
-            Assert.Contains("Bark bark!", output);
-            Assert.Contains("Dogs name: Reksio", output);
+                Assert.Contains("Bark bark!", output);
+                Assert.Contains("Dogs name: Reksio", output);
+            }
+        }
+
+        [Fact]
+        public void Cat_Should_MakeSound_AndShowInfo()
+        {
+            var cat = new Cat();
+            cat.Name = "Mruczek";
+
+            using (var sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+
+                cat.MakeSound();
+                cat.ShowInfo();
+
+                var output = sw.ToString();
+
+                Assert.Contains("Meow!", output);
+                Assert.Contains("Cat name: Mruczek", output);
+            }
         }
     }
 }
